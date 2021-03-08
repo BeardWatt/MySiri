@@ -5,10 +5,9 @@ import sys
 from time import sleep
 from threading import Thread
 
-import websocket
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBoxLayout, QPushButton, QTextBrowser, \
     QLCDNumber
-from PyQt5.QtCore import Qt, pyqtSignal, QTimer, QThread
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QFont
 import pyaudio
 import wave

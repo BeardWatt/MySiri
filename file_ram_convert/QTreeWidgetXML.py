@@ -2,8 +2,7 @@
 从XML文件中提取树，并把树储存到XML文件中
 """
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QFrame, QTreeWidgetItem, \
-    QVBoxLayout, QStackedWidget, QPushButton, QMainWindow, QTreeWidgetItemIterator
+from PyQt5.QtWidgets import QApplication, QTreeWidget, QTreeWidgetItem, QMainWindow
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFont
 from os.path import exists
