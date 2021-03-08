@@ -7,11 +7,10 @@
 2、菜单栏：
 
 """
-
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSplitter
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtGui import QFont, QIcon
 from FunctionWidget import FunctionWidget
 from ManualWidget import ManualWidget
 
@@ -55,9 +54,11 @@ def run():
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon('../img/app.ico'))
     # custom_font = QFont()
     # custom_font.setPointSize(15)
     # app.setFont(custom_font)
     mainWindow = MainWindow()
+    mainWindow.setWindowIcon(QIcon('../img/app.ico'))
     mainWindow.show()
     sys.exit(app.exec())
