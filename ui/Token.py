@@ -4,8 +4,7 @@
 import sys
 from threading import Thread
 
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QFrame, QTreeWidgetItem, \
-    QVBoxLayout, QStackedWidget, QPushButton, QFormLayout, QLabel, QLineEdit, QDialog
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QFormLayout, QLabel, QLineEdit
 from PyQt5.QtCore import Qt, pyqtSignal
 from file_ram_convert.TokenDict import TokenDict
 
