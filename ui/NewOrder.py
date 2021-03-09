@@ -103,7 +103,7 @@ class NewOrder(QWidget):
     # 处理指令
     def handle_order(self):
         def handler():
-            sleep(0.5)
+            sleep(1)
             self.runtime_state_monitor.append("正在处理")
             ''''''
             get_words = V2W.get_words()
