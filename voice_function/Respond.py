@@ -1,10 +1,11 @@
 """
 获取响应
 """
-import requests
-import time
-import hashlib
 import base64
+import hashlib
+import time
+
+import requests
 
 URL = "http://openapi.xfyun.cn/v2/aiui"
 APPID = "5f8ffba0"

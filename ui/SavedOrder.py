@@ -3,15 +3,16 @@
 """
 import sys
 from threading import Thread
+
+from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QTreeWidgetItem, QVBoxLayout, \
     QPushButton, QMessageBox, QDialog
-from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QFont
-from file_ram_convert.QTreeWidgetXML import QTreeWidgetXML
-from SavedOrderChangeDialog import SavedOrderChangeDialog
+
 import voice_function.W2V as W2V
-from voice_function.TuringRobot import TuringRobot
+from SavedOrderChangeDialog import SavedOrderChangeDialog
+from file_ram_convert.QTreeWidgetXML import QTreeWidgetXML
 from voice_function.MP3Player import MP3Player
+from voice_function.TuringRobot import TuringRobot
 
 
 class SavedOrder(QWidget):

@@ -2,20 +2,21 @@
 新指令ui
 """
 import sys
-from time import sleep
+import wave
 from threading import Thread
+from time import sleep
 
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBoxLayout, QPushButton, QTextBrowser, \
-    QLCDNumber
+import pyaudio
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QFont
-import pyaudio
-import wave
-from voice_function.MP32PCM import MP32PCM
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBoxLayout, QPushButton, QTextBrowser, \
+    QLCDNumber
+
 import voice_function.V2W as V2W
 import voice_function.W2V as W2V
-from voice_function.TuringRobot import TuringRobot
+from voice_function.MP32PCM import MP32PCM
 from voice_function.MP3Player import MP3Player
+from voice_function.TuringRobot import TuringRobot
 
 
 class NewOrder(QWidget):

@@ -2,8 +2,10 @@
 功能区ui
 """
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QTreeWidgetItem, QStackedWidget
+
 from PyQt5.QtCore import Qt, pyqtSignal
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QTreeWidgetItem, QStackedWidget
+
 from NewOrder import NewOrder
 from SavedOrder import SavedOrder
 from Token import Token

@@ -1,8 +1,10 @@
 """
 录制一条音频
 """
-import pyaudio
 import wave
+
+import pyaudio
+
 from MP32PCM import MP32PCM
 
 

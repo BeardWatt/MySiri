@@ -14,19 +14,20 @@
 #   合成小语种需要传输小语种文本、使用小语种发音人vcn、tte=unicode以及修改文本编码方式
 #  错误码链接：https://www.xfyun.cn/document/error-code （code返回错误码时必看）
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-import websocket
+import _thread as thread
+import base64
 import datetime
 import hashlib
-import base64
 import hmac
 import json
-from urllib.parse import urlencode
+import os
 import ssl
-from wsgiref.handlers import format_date_time
 from datetime import datetime
 from time import mktime
-import _thread as thread
-import os
+from urllib.parse import urlencode
+from wsgiref.handlers import format_date_time
+
+import websocket
 
 from file_ram_convert.TokenDict import TokenDict
 

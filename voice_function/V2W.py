@@ -21,19 +21,20 @@
 #  可添加语种或方言，添加后会显示该方言的参数值
 #  错误码链接：https://www.xfyun.cn/document/error-code （code返回错误码时必看）
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-import websocket
+import _thread as thread
+import base64
 import datetime
 import hashlib
-import base64
 import hmac
 import json
-from urllib.parse import urlencode
-import time
 import ssl
-from wsgiref.handlers import format_date_time
+import time
 from datetime import datetime
 from time import mktime
-import _thread as thread
+from urllib.parse import urlencode
+from wsgiref.handlers import format_date_time
+
+import websocket
 
 from file_ram_convert.TokenDict import TokenDict
 

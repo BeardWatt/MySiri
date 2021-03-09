@@ -8,9 +8,11 @@
 
 """
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QSplitter
+
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont, QIcon
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication, QMainWindow, QSplitter
+
 from FunctionWidget import FunctionWidget
 from ManualWidget import ManualWidget
 

@@ -2,9 +2,9 @@
 点击修改按钮时弹出的对话框
 """
 import sys
-from PyQt5.QtWidgets import QApplication, QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox
+
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QApplication, QDialog, QFormLayout, QLabel, QLineEdit, QDialogButtonBox
 
 
 class SavedOrderChangeDialog(QDialog):

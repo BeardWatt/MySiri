@@ -1,9 +1,10 @@
 """
 把mp3转换成pcm
 """
-from ffmpy3 import FFmpeg
 from os import getcwd
 from os.path import join
+
+from ffmpy3 import FFmpeg
 
 
 class MP32PCM:

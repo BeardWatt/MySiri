@@ -3,11 +3,10 @@
 
 """
 import sys
-from os import getcwd
-from PyQt5.QtWidgets import QApplication, QWidget, QSplitter, QVBoxLayout
-from PyQt5.QtWebEngineWidgets import QWebEngineView
+
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QFont
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWidgets import QApplication, QWidget, QSplitter, QVBoxLayout
 
 
 class ManualWidget(QWidget):
