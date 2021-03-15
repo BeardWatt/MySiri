@@ -13,6 +13,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBox
     QLCDNumber
 
 import voice_function.V2W as V2W
+import voice_function.AgeSex as AgeSex
+import voice_function.Emotion as Emotion
 import voice_function.W2V as W2V
 from voice_function.MP32PCM import MP32PCM
 from voice_function.MP3Player import MP3Player
@@ -27,14 +29,15 @@ class NewOrder(QWidget):
     # 2：正在处理指令
     main_btn_status = 0
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, title_text: str = ''):
         super(NewOrder, self).__init__(parent=parent)
+        self.title_text = title_text
         v_layout = QVBoxLayout(self)
         splitter = QSplitter(Qt.Vertical)
         # 运行状态监视器
         self.runtime_state_monitor = QTextBrowser()
         self.runtime_state_monitor.setFontPointSize(18)
-        self.runtime_state_monitor.setText("<h1>Hello World!</h1>")
+        self.runtime_state_monitor.setText("<h1>" + self.title_text + "</h1>")
         # 按钮区
         btn_widget = QWidget()
         btn_widget.setMinimumHeight(150)
@@ -94,6 +97,7 @@ class NewOrder(QWidget):
                 convert = MP32PCM(i='../voice_cache/v2w.mp3',
                                   o='../voice_cache/v2w.pcm')
                 convert.run()
+
             thread = Thread(target=recorder)
             thread.start()
         elif self.main_btn_status == 1:
@@ -107,11 +111,18 @@ class NewOrder(QWidget):
             sleep(1)
             self.runtime_state_monitor.append("正在处理")
             ''''''
-            get_words = V2W.get_words()
-            self.runtime_state_monitor.append('识别到：' + get_words)
-
-            turing_robot = TuringRobot(get_words)
-            respond_text = turing_robot.get_respond()
+            respond_text = 'Biser'
+            if self.title_text == '新指令':
+                get_words = V2W.get_words()
+                self.runtime_state_monitor.append('识别到：' + get_words)
+                turing_robot = TuringRobot(get_words)
+                respond_text = turing_robot.get_respond()
+            elif self.title_text == '年龄、性别识别':
+                respond_text = AgeSex.get_age_sex()
+            elif self.title_text == '情感分析':
+                get_words = V2W.get_words()
+                self.runtime_state_monitor.append('识别到：' + get_words)
+                respond_text = Emotion.get_emotion(get_words)
 
             gap = W2V.get_voice(respond_text)
             self.runtime_state_monitor.append(respond_text)
