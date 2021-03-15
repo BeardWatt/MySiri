@@ -8,11 +8,13 @@ Internal test
 
 ## 测试环境
 python3.9
+
 macOS Catalina 10.15.7
+
 PyCharm 2020.3.3
 
 ## 依赖包
-间requirement.txt
+见requirement.txt
 
 ## 运行截图
 
