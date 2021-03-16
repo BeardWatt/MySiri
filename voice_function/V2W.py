@@ -107,7 +107,7 @@ def on_message(web_socket, message):
         sid = json.loads(message)["sid"]
         if code != 0:
             errMsg = json.loads(message)["message"]
-            print("sid:%s call error:%s code is:%s" % (sid, errMsg, code))
+            # print("sid:%s call error:%s code is:%s" % (sid, errMsg, code))
 
         else:
             data = json.loads(message)["data"]["result"]["ws"]
@@ -118,7 +118,8 @@ def on_message(web_socket, message):
                     result += w["w"]
     #            print("sid:%s call success!,data is:%s" % (sid, json.dumps(data, ensure_ascii=False)))
     except Exception as e:
-        print("receive msg,but parse exception:", e)
+        # print("receive msg,but parse exception:", e)
+        pass
 
 
 # 收到websocket错误的处理
@@ -128,7 +129,8 @@ def on_error(web_socket, error):
 
 # 收到websocket关闭的处理
 def on_close(web_socket):
-    print("### closed ###")
+    # print("### closed ###")
+    pass
 
 
 # 收到websocket连接建立的处理

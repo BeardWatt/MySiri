@@ -32,7 +32,7 @@ def get_emotion(TEXT: str) -> str:
     result = result.read()
     result = result.decode('utf-8')
     result = json.loads(result)
-    print(result)
+    # print(result)
     if result['code'] == '0':
         sentiment = result['data']['sentiment']
         if sentiment == 0:

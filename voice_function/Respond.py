@@ -53,4 +53,4 @@ def readFile(filePath):
 
 
 r = requests.post(URL, headers=buildHeader(), data=readFile(FILE_PATH))
-print(r.content.decode())
+# print(r.content.decode())

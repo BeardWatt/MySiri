@@ -98,16 +98,19 @@ def on_message(ws, message):
         # print(message)
     except Exception as e:
         print("receive msg,but parse exception:", e)
+        pass
 
 
 # 收到websocket错误的处理
 def on_error(ws, error):
     print("### error:", error)
+    pass
 
 
 # 收到websocket关闭的处理
 def on_close(ws):
-    print("### closed ###")
+    # print("### closed ###")
+    pass
 
 
 # 收到websocket连接建立的处理
@@ -188,7 +191,7 @@ def get_age_sex() -> str:
             sex_result = '男性'
         else:
             sex_result = '未知性别'
-        print(age_result, sex_result)
+        # print(age_result, sex_result)
         return '您应该是' + age_result + '、' + sex_result
     else:
         return '抱歉，分析失败，请稍后再试'

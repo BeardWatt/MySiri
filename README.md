@@ -17,6 +17,18 @@ Internal test
 ## 依赖包
 见requirement.txt
 
+```shell
+# 安装依赖包
+# pip3 install -r requirement.txt
+# 或（建议）,可以自动忽略错误，安装成功的包
+cat requirements.txt | xargs -n 1 pip3 install
+
+# macOS还需要
+pip3 install -r requirement_macOS.txt
+```
+
+pyobjc*包为macOS独占，macOS必须安装；其他平台不能安装，不影响软件功能使用。
+
 ## 运行截图
 
 - macOS

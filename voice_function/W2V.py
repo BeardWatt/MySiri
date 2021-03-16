@@ -100,13 +100,13 @@ def on_message(ws, message):
         audio = message["data"]["audio"]
         audio = base64.b64decode(audio)
         status = message["data"]["status"]
-        print(message)
+        # print(message)
         if status == 2:
-            print("ws is closed")
+            # print("ws is closed")
             ws.close()
         if code != 0:
             errMsg = message["message"]
-            print("sid:%s call error:%s code is:%s" % (sid, errMsg, code))
+            # print("sid:%s call error:%s code is:%s" % (sid, errMsg, code))
         else:
 
             with open(v_file_path, 'ab') as f:
@@ -124,7 +124,8 @@ def on_error(ws, error):
 # 收到websocket关闭的处理
 def on_close(web_socket):
     # print(web_socket)
-    print("### closed ###")
+    # print("### closed ###")
+    pass
 
 
 # 收到websocket连接建立的处理
@@ -135,7 +136,7 @@ def on_open(web_socket):
              "data": wsParam.Data,
              }
         d = json.dumps(d)
-        print("------>开始发送文本数据")
+        # print("------>开始发送文本数据")
         web_socket.send(d)
         if os.path.exists(v_file_path):
             os.remove(v_file_path)
