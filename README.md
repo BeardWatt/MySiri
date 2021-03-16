@@ -26,3 +26,8 @@ Internal test
 - Ubuntu
 
 ![Biser@macOS](README.assets/Biser@macOS.png)
+
+## 鸣谢
+- 讯飞语音API提供语音支持
+- 图灵机器人API提供反馈支持
+- ImageMagick提供运行截图拼接支持
