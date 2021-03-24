@@ -29,12 +29,15 @@ class MainWindow(QMainWindow):
         function_widget.begin_save_signal.connect(self.handle_begin_save)
         function_widget.saved_signal.connect(self.handle_saved)
         manual_widget = ManualWidget()
+        # 设置最小宽度
         manual_widget.setMinimumWidth(300)
 
+        # 添加组件
         splitter.addWidget(function_widget)
         splitter.addWidget(manual_widget)
-        splitter.setStretchFactor(0, 7)
-        splitter.setStretchFactor(1, 3)
+        # 设置初始比例，
+        splitter.setStretchFactor(index=0, stretch=7)
+        splitter.setStretchFactor(index=1, stretch=3)
 
         self.setCentralWidget(splitter)
 
