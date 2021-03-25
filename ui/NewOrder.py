@@ -41,7 +41,7 @@ class NewOrder(QWidget):
         # 按钮区
         btn_widget = QWidget()
         btn_widget.setMinimumHeight(150)
-        self.h_layout = QHBoxLayout(self)
+        h_layout = QHBoxLayout(self)
         # 主按钮
         self.btn_main = QPushButton("Go")
         self.btn_main.clicked.connect(self.on_clicked_main_btn)
@@ -55,9 +55,9 @@ class NewOrder(QWidget):
         self.timer = QTimer()
         self.timer.timeout.connect(self.refresh_lcd)
 
-        self.h_layout.addWidget(self.countdown)
-        self.h_layout.addWidget(self.btn_main, alignment=Qt.AlignLeft)
-        btn_widget.setLayout(self.h_layout)
+        h_layout.addWidget(self.countdown)
+        h_layout.addWidget(self.btn_main, alignment=Qt.AlignLeft)
+        btn_widget.setLayout(h_layout)
         splitter.addWidget(self.runtime_state_monitor)
         splitter.addWidget(btn_widget)
         splitter.setStretchFactor(0, 5)
