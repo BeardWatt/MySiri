@@ -68,6 +68,7 @@ class QTreeWidgetXML:
                     attrib=attrib
                 )
                 tree_elem_generator(child_elem, child_item)
+
         tree_elem_generator(root_elem, root_item)
         tree = ElementTree.ElementTree(root_elem)
         tree.write(save_as, encoding='utf-8')
