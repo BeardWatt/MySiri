@@ -77,7 +77,7 @@ class SavedOrder(QWidget):
         if reply == QMessageBox.Yes:
             for item in self.tree.selectedItems():
                 (item.parent() or invisible_root).removeChild(item)
-            self.tree.setCurrentItem(None)
+        self.tree.setCurrentItem(None)
         self.saved_tree()
 
     # 树节点增加
