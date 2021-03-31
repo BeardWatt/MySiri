@@ -37,7 +37,7 @@ pyobjc*包为macOS独占，macOS必须安装；其他平台不能安装，不影
 
 - Ubuntu
 
-![Biser@macOS](README.assets/Biser@macOS.png)
+![Biser@Pi](README.assets/Biser@Pi.png)
 
 ## 鸣谢
 - 讯飞语音API提供语音支持
