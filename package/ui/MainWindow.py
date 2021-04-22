@@ -59,11 +59,11 @@ def run():
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon('../img/app.ico'))
+    app.setWindowIcon(QIcon('../../img/app.ico'))
     # custom_font = QFont()
     # custom_font.setPointSize(15)
     # app.setFont(custom_font)
     mainWindow = MainWindow()
-    mainWindow.setWindowIcon(QIcon('../img/app.ico'))
+    mainWindow.setWindowIcon(QIcon('../../img/app.ico'))
     mainWindow.show()
     sys.exit(app.exec())

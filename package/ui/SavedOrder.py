@@ -8,11 +8,11 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QTreeWidgetItem, QVBoxLayout, \
     QPushButton, QMessageBox, QDialog
 
-import voice_function.W2V as W2V
+from package.voice_function import W2V as W2V
 from SavedOrderChangeDialog import SavedOrderChangeDialog
-from file_ram_convert.QTreeWidgetXML import QTreeWidgetXML
-from voice_function.MP3Player import MP3Player
-from voice_function.TuringRobot import TuringRobot
+from package.file_ram_convert.QTreeWidgetXML import QTreeWidgetXML
+from package.voice_function.MP3Player import MP3Player
+from package.voice_function.TuringRobot import TuringRobot
 
 
 class SavedOrder(QWidget):

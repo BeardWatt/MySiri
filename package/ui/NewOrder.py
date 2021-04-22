@@ -12,13 +12,13 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBoxLayout, QPushButton, QTextBrowser, \
     QLCDNumber
 
-import voice_function.V2W as V2W
-import voice_function.AgeSex as AgeSex
-import voice_function.Emotion as Emotion
-import voice_function.W2V as W2V
-from voice_function.MP32PCM import MP32PCM
-from voice_function.MP3Player import MP3Player
-from voice_function.TuringRobot import TuringRobot
+from package.voice_function import V2W as V2W
+from package.voice_function import AgeSex as AgeSex
+from package.voice_function import Emotion as Emotion
+from package.voice_function import W2V as W2V
+from package.voice_function.MP32PCM import MP32PCM
+from package.voice_function.MP3Player import MP3Player
+from package.voice_function.TuringRobot import TuringRobot
 
 
 class NewOrder(QWidget):

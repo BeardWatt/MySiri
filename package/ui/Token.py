@@ -7,7 +7,7 @@ from threading import Thread
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QFormLayout, QLabel, QLineEdit
 
-from file_ram_convert.TokenDict import TokenDict
+from package.file_ram_convert.TokenDict import TokenDict
 
 
 class Token(QWidget):

@@ -28,7 +28,7 @@ from wsgiref.handlers import format_date_time
 
 import websocket
 
-from file_ram_convert.TokenDict import TokenDict
+from package.file_ram_convert.TokenDict import TokenDict
 
 STATUS_FIRST_FRAME = 0  # 第一帧的标识
 STATUS_CONTINUE_FRAME = 1  # 中间帧标识
