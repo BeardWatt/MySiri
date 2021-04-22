@@ -11,7 +11,7 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBoxLayout, QPushButton, QTextBrowser, \
     QLCDNumber
-
+sys.path.append('../../../MySiri')
 from package.voice_function import V2W as V2W
 from package.voice_function import AgeSex as AgeSex
 from package.voice_function import Emotion as Emotion
