@@ -8,6 +8,7 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QTreeWidgetItem, QVBoxLayout, \
     QPushButton, QMessageBox, QDialog
 
+sys.path.append('../../../MySiri')
 from package.voice_function import W2V as W2V
 from SavedOrderChangeDialog import SavedOrderChangeDialog
 from package.file_ram_convert.QTreeWidgetXML import QTreeWidgetXML
