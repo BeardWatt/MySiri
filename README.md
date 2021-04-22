@@ -2,10 +2,6 @@
 
 [TOC]
 
-Internal test
-
-**直接运行`package/ui/MainWindow.py`文件**
-
 ## 测试环境
 
 | 环境           | 版本     |
@@ -28,6 +24,16 @@ pip3 install -r requirements_macOS.txt
 ```
 
 pyobjc*包为macOS独占，macOS必须安装；其他平台不能安装，不影响软件功能使用。
+
+## 运行方式
+
+```shell
+# cd 到源码的ui路径下
+cd MySiri/package/ui
+
+# 执行
+python3 MainWindow.py
+```
 
 ## 运行截图
 

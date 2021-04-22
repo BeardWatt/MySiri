@@ -10,3 +10,4 @@ PyQtWebEngine==5.15.4
 PyQtWebEngine-Qt5==5.15.2
 six==1.15.0
 websocket-client==0.58.0
+requests==2.25.1
