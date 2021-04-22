@@ -4,7 +4,7 @@
 
 Internal test
 
-**直接运行ui/MainWindow文件**
+**直接运行`package/ui/MainWindow.py`文件**
 
 ## 测试环境
 
