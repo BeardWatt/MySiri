@@ -1,10 +1,13 @@
 import json
 import urllib.request
 
+from package.file_ram_convert.TokenDict import TokenDict
+
 
 class TuringRobot:
     api_url = "http://openapi.tuling123.com/openapi/api/v2"
     text_input = ""
+    apiKey = ""
 
     req = {
         "perception":
@@ -27,7 +30,7 @@ class TuringRobot:
 
         "userInfo":
             {
-                "apiKey": "fafa0debb9ca422096ccbcd8d1f92863",
+                "apiKey": apiKey,
                 "userId": "OnlyUseAlphabet"
             }
     }
@@ -35,6 +38,10 @@ class TuringRobot:
     def __init__(self, text_input: str):
         self.text_input = text_input
         self.req["perception"]["inputText"]["text"] = text_input
+        token_loader = TokenDict('../status_saved/turingRobot.npy')
+        token_info = token_loader.load()
+        self.apiKey = token_info
+        self.req["userInfo"]["apiKey"] = token_info["APIKey"]
 
     def get_respond(self) -> str:
         # print(req)

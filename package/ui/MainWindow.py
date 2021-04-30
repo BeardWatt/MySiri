@@ -50,13 +50,6 @@ class MainWindow(QMainWindow):
         self.status.showMessage(s, duration)
 
 
-def run():
-    application = QApplication(sys.argv)
-    main_window = MainWindow()
-    main_window.show()
-    sys.exit(app.exec())
-
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon('../../img/app.ico'))

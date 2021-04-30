@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QTreeWidget, QSplitter, QTreeWidgetItem, QVBoxLayout, \
     QPushButton, QMessageBox, QDialog
 
-sys.path.append('../../../MySiri')
+sys.path.append('../..')
 from package.voice_function import W2V as W2V
 from SavedOrderChangeDialog import SavedOrderChangeDialog
 from package.file_ram_convert.QTreeWidgetXML import QTreeWidgetXML
@@ -20,6 +20,7 @@ class SavedOrder(QWidget):
     file_path = r'../status_saved/saved_order_tree.xml'
     begin_save_tree_signal = pyqtSignal(str, int)
     tree_saved_signal = pyqtSignal(str, int)
+    begin_record_order_signal = pyqtSignal(str)
 
     def __init__(self, parent=None):
         super(SavedOrder, self).__init__(parent=parent)
@@ -62,7 +63,7 @@ class SavedOrder(QWidget):
     def load_tree(self, file_path: str = None) -> QTreeWidget:
         if file_path is None:
             file_path = self.file_path
-        tree_xml = QTreeWidgetXML(file_path=file_path)
+        tree_xml = QTreeWidgetXML(header_labels_list=['名称', '指令', '备注'], file_path=file_path)
         tree_xml.xml_2_tree()
         return QTreeWidget() if (tree_xml.tree is None) else tree_xml.tree
 
@@ -107,12 +108,12 @@ class SavedOrder(QWidget):
 
     # 对树的更改保存到文件中
     def saved_tree(self):
-        self.begin_save_tree_signal.emit('正在保存到文件', 3000)
+        self.begin_save_tree_signal.emit('已存指令修改正在保存到文件', 3000)
 
         def handler(file_path: str, tree_widget: QTreeWidget):
-            tree_convert = QTreeWidgetXML(file_path=file_path)
+            tree_convert = QTreeWidgetXML(header_labels_list=['名称', '指令', '备注'], file_path=file_path)
             tree_convert.tree_2_xml(tree_widget)
-            self.tree_saved_signal.emit('修改已保存', 3000)
+            self.tree_saved_signal.emit('已存指令修改已保存', 3000)
 
         thread = Thread(target=handler, args=(self.file_path, self.tree))
         thread.start()
@@ -136,6 +137,7 @@ class SavedOrder(QWidget):
         self.run_btn.setEnabled(False)
 
         def handler():
+            self.begin_record_order_signal.emit(self.tree.currentItem().text(1))
             turing_robot = TuringRobot(self.tree.currentItem().text(1))
             respond_text = turing_robot.get_respond()
             gap = W2V.get_voice(respond_text)

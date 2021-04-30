@@ -40,11 +40,14 @@ v_file_path = r'../voice_cache/w2v.mp3'
 
 class W2V(object):
     # 初始化
-    def __init__(self, APPID, APIKey, APISecret, Text):
+    def __init__(self, APPID, APIKey, APISecret, Text, mp3_path: str = None):
         self.APPID = APPID
         self.APIKey = APIKey
         self.APISecret = APISecret
         self.Text = Text
+        global v_file_path
+        if mp3_path:
+            v_file_path = mp3_path
 
         # 公共参数(common)
         self.CommonArgs = {"app_id": self.APPID}
@@ -87,10 +90,12 @@ class W2V(object):
         # print('websocket url :', url)
         return url
 
+
 # 测试时候在此处正确填写相关信息即可运行
 wsParam = W2V(APPID='5f8ffba0', APISecret='fb006ab543ed2b029920e07f21f5ce7e',
               APIKey='38b3abe70c5866bfe6fb7c4ab36c821d',
               Text="")
+
 
 def on_message(ws, message):
     try:
@@ -144,13 +149,13 @@ def on_open(web_socket):
     thread.start_new_thread(run, ())
 
 
-def get_voice(text_input):
+def get_voice(text_input, mp3_path: str = None):
     global wsParam
     token_dict = TokenDict('../status_saved/aiui.npy')
     token_info = token_dict.load()
     wsParam = W2V(APPID=token_info['APPID'], APISecret=token_info['APISecret'],
                   APIKey=token_info['APIKey'],
-                  Text=text_input)
+                  Text=text_input, mp3_path=mp3_path)
     websocket.enableTrace(False)
     wsUrl = wsParam.create_url()
     ws = websocket.WebSocketApp(wsUrl, on_message=on_message, on_error=on_error, on_close=on_close)

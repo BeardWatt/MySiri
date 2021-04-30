@@ -13,11 +13,13 @@ class QTreeWidgetXML:
     tree: QTreeWidget = None
     file_path: str = None
 
-    def __init__(self, file_path: str):
+    def __init__(self, header_labels_list: dict, file_path: str):
         if exists(file_path):
             self.file_path = file_path
         else:
             print('XML文件不存在')
+        self.header_labels_list = header_labels_list
+        self.columnNum = len(header_labels_list)
 
     # 从XML文件中读取树
     def xml_2_tree(self, file_path: str = None):
@@ -32,15 +34,23 @@ class QTreeWidgetXML:
         # 生成树
         def tree_widget_generator(tree_elem: ElementTree.Element, tree_item: QTreeWidgetItem):
             tree_item.setText(0, tree_elem.tag)
-            tree_item.setText(1, tree_elem.attrib['指令'] if ('指令' in tree_elem.attrib.keys()) else '')
-            tree_item.setText(2, tree_elem.attrib['备注'] if ('备注' in tree_elem.attrib.keys()) else '')
+            for i in range(1, self.columnNum):
+                tree_item.setText(
+                    i,
+                    tree_elem.attrib[self.header_labels_list[i]] if (
+                            self.header_labels_list[i] in tree_elem.attrib.keys()
+                    ) else ''
+                )
             for child_elem in tree_elem:
                 child_item = QTreeWidgetItem(tree_item)
                 tree_widget_generator(child_elem, child_item)
 
         self.tree = QTreeWidget()
-        self.tree.setColumnCount(3)
-        self.tree.setHeaderLabels(['名称', '指令', '备注'])
+        self.tree.setColumnCount(self.columnNum)
+        header_labels = list()
+        for i in range(self.columnNum):
+            header_labels.append(self.header_labels_list[i])
+        self.tree.setHeaderLabels(header_labels)
         tree_widget_generator(root_elem, self.tree.invisibleRootItem())
 
     # 保存树到XML文件
@@ -58,10 +68,9 @@ class QTreeWidgetXML:
             for i in range(tree_item.childCount()):
                 child_item = tree_item.child(i)
                 attrib = dict()
-                if child_item.text(1):
-                    attrib['指令'] = child_item.text(1)
-                if child_item.text(2):
-                    attrib['备注'] = child_item.text(2)
+                for i in range(1, self.columnNum):
+                    if child_item.text(i):
+                        attrib[self.header_labels_list[i]] = child_item.text(i)
                 child_elem = ElementTree.SubElement(
                     tree_elem,
                     child_item.text(0),
@@ -80,7 +89,7 @@ if __name__ == '__main__':
     custom_font.setPointSize(18)
     app.setFont(custom_font)
 
-    tree_xml = QTreeWidgetXML(file_path=r'../status_saved/saved_order_tree.xml')
+    tree_xml = QTreeWidgetXML(header_labels_list=['名称', '指令', '备注'], file_path=r'../status_saved/saved_order_tree.xml')
     tree_xml.xml_2_tree()
     tree_xml.tree_2_xml()
 

@@ -7,12 +7,12 @@ from threading import Thread
 from time import sleep
 
 import pyaudio
-from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtCore import Qt, QTimer, pyqtSignal
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QSplitter, QVBoxLayout, QPushButton, QTextBrowser, \
     QLCDNumber
 
-sys.path.append('../../../MySiri')
+sys.path.append('../..')
 from package.voice_function import V2W as V2W
 from package.voice_function import AgeSex as AgeSex
 from package.voice_function import Emotion as Emotion
@@ -29,6 +29,7 @@ class NewOrder(QWidget):
     # 1：正在听取指令
     # 2：正在处理指令
     main_btn_status = 0
+    begin_record_order_signal = pyqtSignal(str)
 
     def __init__(self, parent=None, title_text: str = ''):
         super(NewOrder, self).__init__(parent=parent)
@@ -74,7 +75,7 @@ class NewOrder(QWidget):
 
             # 开始录音
             def recorder():
-                CHUNK = 16  # 每个缓冲区的帧数
+                CHUNK = 128  # 每个缓冲区的帧数
                 FORMAT = pyaudio.paInt16  # 采样位数
                 CHANNELS = 1  # 单声道
                 RATE = 16000  # 采样频率
@@ -116,6 +117,7 @@ class NewOrder(QWidget):
             if self.title_text == '新指令':
                 get_words = V2W.get_words()
                 self.runtime_state_monitor.append('识别到：' + get_words)
+                self.begin_record_order_signal.emit(get_words)
                 turing_robot = TuringRobot(get_words)
                 respond_text = turing_robot.get_respond()
             elif self.title_text == '年龄、性别识别':

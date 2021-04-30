@@ -180,13 +180,16 @@ def on_open(ws):
     thread.start_new_thread(run, ())
 
 
-def get_words() -> str:
+def get_words(pcm_path: str = None) -> str:
     global wsParam, result
     token_dict = TokenDict('../status_saved/aiui.npy')
     token_info = token_dict.load()
+    audio_file = r'../voice_cache/v2w.pcm'
+    if pcm_path:
+        audio_file = pcm_path
     wsParam = V2W(APPID=token_info['APPID'], APISecret=token_info['APISecret'],
                   APIKey=token_info['APIKey'],
-                  AudioFile=r'../voice_cache/v2w.pcm')
+                  AudioFile=audio_file)
     result = ''
     websocket.enableTrace(False)
     wsUrl = wsParam.create_url()
